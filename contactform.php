@@ -26,7 +26,7 @@ if ($mail_status) { ?>
 }
 else { ?>
 <script language="javascript" type="text/javascript">
-		window.location = 'http://creativeb.ca/thank-you';
+		window.location = 'http://creativeb.ca/thankyou.html';
 	</script>
 
 
