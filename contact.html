@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+	
+	<title>Italia Design / Creative B</title>
+	<link rel="stylesheet" href="css/normalize.css" type="text/css">
+	<link rel='stylesheet' href='css/style.css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,900|Roboto+Slab:300' rel='stylesheet' type='text/css'>
+
+
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.css">
+	
+	
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+
+		<script src="js/owl.carousel.min.js"></script>
+
+	<!-- 
+		Thought of using jQuery UI's .addClass transitions as fallback (or primary) but doesn't work as well
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script> 
+	-->
+	
+	<script>
+	$(document).ready(function()
+		{	
+        	//Preloader
+
+			$(window).load(function() { // makes sure the whole site is loaded
+         	$('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            $('body').delay(350).css({'overflow':'visible'});
+            $("#header").delay(800).queue(function(){$(this).addClass('active')});
+            $(".headerbox").delay(800).queue(function(){$(this).addClass('active')});
+
+        	})
+
+
+        	//Main Menu
+        	var distance = 200;
+   			$window = $(window);
+			$(window).scroll(function() {
+    			if ( $window.scrollTop() >= distance ) {
+    				  $("#header").removeClass("ontop");
+   				}
+   				else if ( $window.scrollTop() <= distance ){
+   					 $("#header").addClass("ontop");
+
+   				}
+				});
+
+  			$(".headerbox").toggle(function() {
+  				$(".headerbox .menu").addClass("active");
+  				$(".hiddenmenu").addClass("active");
+        		$('body').css('overflow', 'hidden');
+        		$('#content').addClass("active");
+
+  				}, function() {
+  				$(".headerbox .menu").removeClass("active");
+  				$(".hiddenmenu").removeClass("active");
+        		$('body').css('overflow', 'auto');
+        		$('#content').removeClass("active");
+
+				});
+
+
+  			$(document).keyup(function(e) {
+  				if (e.keyCode == 27) { 
+  				$(".right a").removeClass("active");
+  				$(".hiddenmenu").removeClass("active");
+  				$(".headerbox .menu").removeClass("active");
+  				$('body').css('overflow', 'auto');
+        		$('#content').removeClass("active");
+
+
+
+  				}   // esc
+				});
+
+  			var previousScrollvertical = 0;
+			var previousScrollHorizontal = 0;
+    			$(window).scroll(function(){
+       			var currentVerticalScroll = $(this).scrollTop();
+       			var currentHorizontalScroll = $(this).scrollLeft();
+       				if(currentVerticalScroll==previousScrollvertical) {    	
+       				}
+       				else if(currentHorizontalScroll==previousScrollHorizontal) {
+               			if (currentVerticalScroll > previousScrollvertical){
+            					$( ".headerbox" ).removeClass("active"); 
+								$( "#header" ).removeClass("active");               
+       						
+									
+              		
+						}
+               			else {
+               				 
+								$( ".headerbox" ).addClass( "active");
+								$( "#header" ).addClass( "active");
+      						
+						}
+       				}
+       		previousScrollHorizontal = currentHorizontalScroll;
+       		previousScrollvertical =currentVerticalScroll;
+    		});
+
+  
+
+			//Dropdown Menu
+  			$("ul.strategies").toggle(function() {
+  				$(".menu", this).addClass("active");
+  				$(".dropinfo", this).slideDown("fast");
+ 
+  				}, function() {
+  				$(".menu", this).removeClass("active");
+  				  $(".dropinfo", this).slideUp("fast");
+
+  				
+				});
+
+  			$(".moreinfo .menucontainer").toggle(function() {
+  				$(".menu",this).addClass("active");
+  				$(".dropinfo",this).slideDown("fast");
+ 
+  				}, function() {
+  				$(".menu",this).removeClass("active");
+  				  $(".dropinfo",this).slideUp("fast");
+
+  				
+				});
+
+			//Carousel
+
+
+  				$(".gallery").owlCarousel({
+  				items : 2,
+  				itemsDesktop:	[1199,2],
+  				itemsDesktopSmall:	[979,2],
+  				itemsTablet: [768,2],
+  			    slideSpeed : 300,
+      			paginationSpeed : 400,
+      			lazyLoad : true,
+      			pagination :true,
+      			scrollPerPage:true
+
+      			});
+ 				
+
+ 				
+ 				
+
+
+ 				 var owl = $(".gallery");
+
+ 				$(".nextgallery").click(function(){
+ 				owl.trigger('owl.next');
+
+ 				});
+ 				$(".previousgallery").click(function(){
+ 				owl.trigger('owl.prev');
+
+ 				});
+
+
+
+		
+
+			//Videos and pictureswap
+
+				$(function(){
+				  	$('.videos').click(function() {
+					    $('.hiddenvideo').attr( "src","http://player.vimeo.com/video/25427219?byline=0&amp;portrait=0&autoplay=1");
+					    $('.picturevid').hide();
+					    $('.playvideo').hide();
+				  });
+				});
+		
+ 
+  });
+
+
+</script>
+ 
+
+
+
+
+		
+</head>
+
+<body>
+
+	<div id="preloader">
+	<!-- <div class="spinner">
+  	<div class="bounce1"></div>
+  	<div class="bounce2"></div>
+  	<div class="bounce3"></div>
+	</div> -->
+	</div>
+
+
+
+<div id="header" class="ontop">
+	<div class="headerbox">
+		<div class="left">
+			<div class="logo">
+				<li>CREATIVE </li>
+				<li  class="logobox"><span></span></li>
+				<li>B</li>
+			</div>
+		</div>
+		<div class="right">
+			<div class="menu crossed"><span></span></div>
+		</div>
+	</div>
+
+	<div class="hiddenmenu">
+		<div class="firstmenu">
+				<div class="biglink first">
+					<a href="/about"><h3>About</h3></a>
+				</div>
+				<div class="biglink second">
+					<a href="/contact"><h3>Contact</h3></a>
+				</div>
+		</div>
+		<div class="secondmenu">
+			<ul>
+				<a href="yokohama.html">
+					<li class="yokosprite sprites"><span></span></li>
+					<li><h1>Yokohama</h1></li>
+					<li><h3>How do you drive?</h3></li>
+				</a>
+			</ul>
+			<ul>
+				<a href="broadstreet.html">
+					<li class="broadsprite sprites"><span></span></li>
+					<li><h1>Broadstreet</h1></li>
+					<li><h3>Finding the rental experience</h3></li>
+				</a>
+			</ul>
+			<ul>
+				<a href="italiadesign.html">
+					<li class="italiasprite sprites"><span></span></li>
+					<li><h1>Italia Design</h1></li>
+					<li><h3>Explore emotion in craftsmanship</h3></li>
+				</a>
+			</ul>
+			<ul>
+				<a href="province-photobooth.html">
+					<li class="provincesprite sprites"><span></span></li>
+					<li><h1>Province Photobooth</h1></li>
+					<li><h3>Sharing your news</h3></li>
+				</a>
+			</ul>
+			<ul>
+				<a href="solar-hydration-pack.html">
+					<li class="solarsprite sprites"><span></span></li>
+					<li><h1>Solar Hydration Pack</h1></li>
+					<li><h3>Backpack water station for farm workers</h3></li>
+				</a>
+			</ul>
+			<ul>
+				<a href="gardenblock.html">
+					<li class="gardensprite sprites"><span></span></li>
+					<li><h1>Gardenblock</h1></li>
+					<li><h3>Indoor hydroponics for small spaces</h3></li>
+				</a>
+			</ul>
+		</div>
+
+		<div id="contact">
+			<div class="contactmebackground ">	
+			</div>
+			<div class="row clearfix contactme ">	
+				<div class="column full">					
+						<div class="intext">
+							<h1> Say Hello </h1>
+							<p><h4>The main goal of this project was to create a fully functional user to business property rental system. We implemented a location-based filter system as well as a variable filter system to efficiently list out properties. Many property qualities as well as property information was used in the system to pinpoint user needs.</h4></p>						
+						</div>		
+
+						<form id="form" action="http://creativeb.ca/wp-content/themes/CreativeB/contactform.php" method="post" >
+									
+							<div class="formtop">    
+				        
+						        <li id="li_1" class="inputtop"  >
+									<label class="inputdescription" for="element_1"><h1>Name</h1> </label>
+									<span>
+										<h3><input id="element_1" name="element_1" class="elementtext" type="text"  value=""/></h3> 
+									</span> 
+								</li>						        
+						        
+						        <li id="li_2" class="inputtop"  >
+									<label class="inputdescription" for="element_2"><h1>Email</h1> </label>
+									<span>
+										<h3><input id="element_2" name="element_2" class="elementtext" type="text"  value=""/> </h3>
+									</span> 
+								</li>	
+
+					        </div>
+					        
+					        <div class="formtop">
+						        <li id="li_3" class="inputtop">
+									<label class="inputdescription" for="element_3"><h1>Message</h1> </label>
+									<span>
+										<h3><textarea id="element_3" name="element_3" class="textarea"></textarea></h3> 
+									</span> 
+								</li>
+
+								<li class="submitbutton">
+									<h3><input type="submit" value="Send" class="button"></h3>
+								</li>
+							</div>						
+						</form>	
+				</div>
+			</div>	
+		</div>
+		
+	</div>
+</div>
+
+
+
+
+
+
+	
+
+<div id="content">
+
+
+	<div id="contact">
+		<div class="contactmebackground ">	
+		</div>
+		<div class="row clearfix contactme ">	
+			<div class="column full">					
+					<div class="intext">
+						<h1> Say Hello </h1>
+						<p><h4>The main goal of this project was to create a fully functional user to business property rental system. We implemented a location-based filter system as well as a variable filter system to efficiently list out properties. Many property qualities as well as property information was used in the system to pinpoint user needs.</h4></p>						
+					</div>		
+
+					<form id="form" action="http://creativeb.ca/wp-content/themes/CreativeB/contactform.php" method="post" >
+								
+						<div class="formtop">    
+			        
+					        <li id="li_1" class="inputtop"  >
+								<label class="inputdescription" for="element_1"><h1>Name</h1> </label>
+								<span>
+									<h3><input id="element_1" name="element_1" class="elementtext" type="text"  value=""/></h3> 
+								</span> 
+							</li>						        
+					        
+					        <li id="li_2" class="inputtop"  >
+								<label class="inputdescription" for="element_2"><h1>Email</h1> </label>
+								<span>
+									<h3><input id="element_2" name="element_2" class="elementtext" type="text"  value=""/> </h3>
+								</span> 
+							</li>	
+
+				        </div>
+				        
+				        <div class="formtop">
+					        <li id="li_3" class="inputtop">
+								<label class="inputdescription" for="element_3"><h1>Message</h1> </label>
+								<span>
+									<h3><textarea id="element_3" name="element_3" class="textarea"></textarea></h3> 
+								</span> 
+							</li>
+
+							<li class="submitbutton">
+								<h3><input type="submit" value="Send" class="button"></h3>
+							</li>
+						</div>						
+					</form>	
+			</div>
+		</div>	
+	</div>
+
+	
+
+
+
+
+
+
+
+
+
+
+</div> 
+    
+
+
+</body>
+
+</html>

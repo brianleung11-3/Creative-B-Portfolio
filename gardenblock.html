@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+
+
+	
+	<title>GardenBlock / Creative B</title>
+	<link rel="stylesheet" href="css/normalize.css" type="text/css">
+	<link rel='stylesheet' href='css/style.css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,900|Roboto+Slab:300' rel='stylesheet' type='text/css'>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+	
+	
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+
+	<!-- 
+		Thought of using jQuery UI's .addClass transitions as fallback (or primary) but doesn't work as well
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script> 
+	-->
+	
+	<script>
+	$(document).ready(function()
+		{	
+        	//Preloader
+
+			$(window).load(function() { // makes sure the whole site is loaded
+         	$('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            $('body').delay(350).css({'overflow':'visible'});
+            $("#header").delay(800).queue(function(){$(this).addClass('active')});
+            $(".headerbox").delay(800).queue(function(){$(this).addClass('active')});
+
+        	})
+
+
+        	        	//Main Menu
+        	var distance = 150;
+   			$window = $(window);
+			$(window).scroll(function() {
+    			if ( $window.scrollTop() >= distance ) {
+    				  $("#header").removeClass("ontop");
+   				}
+   				else if ( $window.scrollTop() <= distance ){
+   					 $("#header").addClass("ontop");
+
+
+
+   				}
+				});
+
+  			$(".right").toggle(function() {
+  				$(".headerbox .menu").addClass("active");
+  				$(".hiddenmenu").addClass("active");
+        		$('body').css('overflow', 'hidden');
+        		$('#content').addClass("active");
+  				$(".headerbox").addClass("activate");
+
+        		$("#about").removeClass("about");  
+        		$("#contact").removeClass("contact"); 
+        		$(".secondmenu").removeClass("about");
+   				$(".secondmenu").removeClass("contact");
+  				$(".first").addClass("active");
+  				$(".second").removeClass("active");
+  				$(".third").removeClass("active");
+  				$("#header").removeClass("active")
+
+
+  				}, function() {
+  				$(".headerbox .menu").removeClass("active");
+  				$(".hiddenmenu").removeClass("active");
+        		$('body').css('overflow', 'initial');
+        		$('#content').removeClass("active");
+        		$("#header").addClass("active")
+  				$(".headerbox").removeClass("activate");
+
+
+
+				});
+
+  			$("#header").mouseenter(function() {
+  				if (!$(".hiddenmenu").hasClass("active")) {
+  					$(this).addClass("active");
+  					$(".headerbox").addClass("active");
+  				}  				
+  			});
+
+  			$(".workwithme a").click(function() {
+  				$(".right").click();
+  				$(".headerbox .menu").addClass("active");
+  				$(".headerbox").addClass("active");
+  				$(".hiddenmenu").addClass("active");
+  				$('body').css('overflow', 'hidden');
+  				$('#content').addClass("active");
+  				$(".headerbox").addClass("activate")
+  				$("#about").removeClass("about");
+				$("#contact").addClass("contact");
+  				$(".secondmenu").addClass("contact");
+  				
+  				$(".first").removeClass("active");  
+  				$(".second").addClass("active");
+  				$(".third").removeClass("active"); 
+  					
+  						
+	
+  			});
+  			
+
+
+
+  			$(document).keyup(function(e) {
+  				if (e.keyCode == 27) { 
+  				$(".hiddenmenu").removeClass("active");
+  				$(".headerbox .menu").removeClass("active");
+  				$('body').css('overflow', 'initial');
+        		$('#content').removeClass("active");
+        		$(".headerbox").removeClass("activate");
+        		$("#header").addClass("active");
+
+
+
+
+  				}   // esc
+				});
+
+  			var previousScrollvertical = 0;
+			var previousScrollHorizontal = 0;
+    			$(window).scroll(function(){
+       			var currentVerticalScroll = $(this).scrollTop();
+       			var currentHorizontalScroll = $(this).scrollLeft();
+       				if(currentVerticalScroll==previousScrollvertical) {    	
+       				}
+       				else if(currentHorizontalScroll==previousScrollHorizontal) {
+               			if (currentVerticalScroll > previousScrollvertical){
+            					$( ".headerbox" ).removeClass("active"); 
+								$( "#header" ).removeClass("active");
+								$("#header").removeClass("ontop");         		
+						}
+               			else {
+               				 
+								$( ".headerbox" ).addClass( "active");
+								$( "#header" ).addClass( "active");
+      						
+						}
+       				}
+       		previousScrollHorizontal = currentHorizontalScroll;
+       		previousScrollvertical =currentVerticalScroll;
+    		});
+
+	   //  	  	var previousScrollvertical = 0;
+				// var previousScrollHorizontal = 0;
+	   //  			$(".hiddenmenu").scroll(function(){
+	   //     			var currentVerticalScroll = $(this).scrollTop();
+	   //     			var currentHorizontalScroll = $(this).scrollLeft();
+	   //     				if(currentVerticalScroll==previousScrollvertical) {    	
+	   //     				}
+	   //     				else if(currentHorizontalScroll==previousScrollHorizontal) {
+	   //             			if (currentVerticalScroll > previousScrollvertical){
+	   //          					$( ".headerbox" ).removeClass("active"); 
+				// 					$( "#header" ).removeClass("active");
+				// 					$("#header").removeClass("ontop");         		
+				// 			}
+	   //             			else {
+	               				 
+				// 					$( ".headerbox" ).addClass( "active");
+				// 					$( "#header" ).addClass( "active");
+	      						
+				// 			}
+	   //     				}
+	   //     		previousScrollHorizontal = currentHorizontalScroll;
+	   //     		previousScrollvertical =currentVerticalScroll;
+	   //  		});
+	    
+
+  			$(".second").click(function() {
+  				$("#contact").addClass("contact");
+  				$("#about").removeClass("about");
+
+  				$(".secondmenu").addClass("contact");
+  				$(".first").removeClass("active");  
+  				$(".second").addClass("active");
+  				$(".third").removeClass("active");  				 
+				 
+				});
+
+
+  			$(".first").click(function() {
+  				$("#contact").removeClass("contact");
+  				$("#about").removeClass("about");
+  				$(".secondmenu").removeClass("contact");
+  				$(".secondmenu").removeClass("about");
+  				$(".first").addClass("active");
+  				$(".second").removeClass("active");  
+  				$(".third").removeClass("active");  	 
+				 
+				});
+
+  			$(".third").click(function() {
+  				$(".secondmenu").addClass("about");
+  				$("#about").addClass("about");
+  				$("#contact").removeClass("contact");
+  				$(".secondmenu").removeClass("contact");
+  				$(".first").removeClass("active");
+  				$(".second").removeClass("active");  
+  				$(".third").addClass("active");  	 
+				 
+				});
+
+  			// Contact Form
+
+  			$("#element_1").focusin(function() {
+  				 focus++;
+  				$("#li_1 .logobox").addClass("active");						
+				});
+  			$("#element_1").focusout(function() {
+  				 focus++;
+  				$("#li_1 .logobox").removeClass("active");						
+				});
+  			$("#element_2").focusin(function() {
+  				 focus++;
+  				$("#li_2 .logobox").addClass("active");						
+				});
+  			$("#element_2").focusout(function() {
+  				 focus++;
+  				$("#li_2 .logobox").removeClass("active");						
+				});
+  			$("#element_3").focusin(function() {
+  				 focus++;
+  				$("#li_3 .logobox").addClass("active");						
+				});
+  			$("#element_3").focusout(function() {
+  				 focus++;
+  				$("#li_3 .logobox").removeClass("active");						
+				});
+
+
+		
+
+  			$('#submitbtn').click(function() {
+		        var sEmail = $('#element_2').val();
+		        if ($.trim(sEmail).length == 0) {
+		            alert('Please enter valid email address');
+		            event.preventDefault();
+		        }
+		        if (validateEmail(sEmail)) {
+		        }
+		        else {
+            	alert('Invalid Email Address');
+            	event.preventDefault();
+        		}
+		        
+		    });
+
+			function validateEmail(sEmail) {
+			    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+			    if (filter.test(sEmail)) {
+			        return true;
+			    }
+			    else {
+			        return false;
+			    }
+			}
+			
+
+  
+
+			//Dropdown Menu
+  			$("ul.strategies").toggle(function() {
+  				$(".menu", this).addClass("active");
+  				$(".dropinfo", this).slideDown("fast");
+ 
+  				}, function() {
+  				$(".menu", this).removeClass("active");
+  				  $(".dropinfo", this).slideUp("fast");
+
+  				
+				});
+
+  			$(".moreinfo .menucontainer").toggle(function() {
+  				$(".menu",this).addClass("active");
+  				$(".dropinfo",this).slideDown("fast");
+ 
+  				}, function() {
+  				$(".menu",this).removeClass("active");
+  				  $(".dropinfo",this).slideUp("fast");
+
+  				
+				});
+
+
+			//Videos and pictureswap
+
+				$(function(){
+				  	$('.videos').click(function() {
+					    $('.hiddenvideo').attr( "src","http://www.youtube.com/embed/u-wFbKK3f8w?autohide=1&showinfo=0&autoplay=1&vq=hd720");
+					    $('.picturevid').hide();
+					    $('.playvideo').hide();
+				  });
+				});
+		
+
+
+ 
+  });
+
+
+</script>
+ 
+
+
+
+
+		
+</head>
+
+<body>
+	<div id="preloader">
+		<div class="preloadercontainer">
+			<div class="spinner">
+		  		<div class="bounce1"></div>
+			</div>
+
+			<div class="slider">
+				<div class="line"></div>
+			  	<div class="break dot1"></div>
+			  	<div class="break dot2"></div>
+			  	<div class="break dot3"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+<div id="header" class="ontop">
+	<div class="headerbox">
+		<div class="left">
+			<a href="index.html">
+				<div class="logo">			
+				</div>
+			</a>
+		</div>
+		<div class="right">
+			<div class="menu crossed"><span></span></div>
+		</div>
+	</div>
+
+	<div class="hiddenmenu">
+
+		
+
+		<div class="firstmenu">
+				<div class="mainbiglink third ">
+					<h3>About</h3>
+				</div>
+				<div class="mainbiglink first active">
+					<h3>Case Study</h3>
+				</div>
+				<div class="mainbiglink second">
+					<h3>Contact</h3>
+				</div>
+		</div>
+		<div class="secondmenu">
+			<ul class="yokosprite">
+				<a href="yokohama.html">
+					<li class="yokosprite sprites"><span></span></li>
+					<li><h1>Yokohama</h1></li>
+					<li><h2>How do you drive?</h2></li>
+
+				</a>
+			</ul>
+			<ul class="broadsprite">
+				<a href="broadstreet.html">
+					<li class="broadsprite sprites"><span></span></li>
+					<li><h1>Broadstreet</h1></li>
+					<li><h2>Finding the rental experience</h2></li>
+				</a>
+			</ul>
+			<ul class="italiasprite">
+				<a href="italiadesign.html">
+					<li class="italiasprite sprites"><span></span></li>
+					<li><h1>Italia Design</h1></li>
+					<li><h2>Explore emotion in craftsmanship</h2></li>
+				</a>
+			</ul>
+			
+			<ul class="solarsprite">
+				<a href="solar-hydration-pack.html">
+					<li class="solarsprite sprites"><span></span></li>
+					<li><h1>Solar Hydration Pack</h1></li>
+					<li><h2>Backpack water station for farm workers</h2></li>
+				</a>
+			</ul>
+			<ul class="gardensprite">
+				<a href="gardenblock.html">
+					<li class="gardensprite sprites"><span></span></li>
+					<li><h1>Gardenblock</h1></li>
+					<li><h2>Indoor hydroponics for small spaces</h2></li>
+				</a>
+			</ul>
+			<div class="workbackground"></div>
+
+			<div class="thirdmenu">
+				<div class="bottommenu">
+					<div class="socialfooter">
+						<li><h3><a href="blog.html">Blog</a></h3></li>
+						<li class="socialicon"><h3><a href="http://www.linkedin.com/pub/brian-leung/58/6a8/724">in</a></h3></li>
+						<li class="socialicon"><h3><a href="resume.pdf">cv</a></h3></li>
+					</div>
+				</div>
+
+		
+			</div>
+		</div>
+
+
+		<div id="about">
+			
+					
+			<div class="aboutme">			
+				<div class="intext">
+					<div class="brianleung">
+						<h1>Hi there, I'm</h1>
+						<h2>Brian Leung</h2>
+					</div>
+
+					<h4><b>I’m a user experience designer from Vancouver, BC. I’m an advocate of thoughtfully designing a product to create meaningful value for users that use it. </b><h4>
+					<h4>As an avid experimenter of front-end development, I love to design on the browser so I can play and invent new ways to create interactive functions for my creations.</h4>
+
+					<h5>I’m always up for the next big adventure in life. Whether it's travelling to a third world country or winning an international design competition, my sense of adventure, curiosity, and ambition brings me to ever new heights.</h5>
+
+					<h5>I've worked on projects for Yokohama, Oakley, Braun, the Government of Canada, Dyson, Broadstreet Properties, ICBC, Vancouver Sun, the Province, Aircare, and Ampco. </h5>
+
+					<div class="aboutawards">
+						<img src="img/braunprize.jpg" alt="Braun Prize" height="40px" >
+						<img src="img/jamesdysonaward2.jpg" alt="James Dyson Award" height="40px" >
+						<img src="img/utilitamanifesta2.jpg" alt="Utilita Manifesta" height="40px" >
+						<img src="img/aircare.jpg" alt="Utilita Manifesta" height="40px" >						
+					</div>								
+				</div>		
+
+				<div class="aboutbackgroundcontainer">
+					<div class="aboutbackground">
+							<img src="img/aboutbackground.jpg">								
+					</div>
+				</div>			
+			</div>
+		</div>
+
+
+		<div id="contact">
+			
+			<div class="row clearfix contactme ">	
+				<div class="column full">					
+						<div class="intext">
+							<h1>Say Hello! </h1>
+							<p><h3>I’m always looking for something new to do. Whether its a collaboration, job opportunity, or freelance project, I’d love to hear your ideas. Let’s talk!</h3></p>						
+						</div>		
+
+						<form id="form" action="http://creativeb.ca/contactform.php" method="post" >
+									
+							<div class="formtop">    
+				        
+						        <li id="li_1" class="inputtop"  >
+									<label class="inputdescription" for="element_1"><h1>Name</h1> </label>
+									<span>
+										<h3><input id="element_1" name="element_1" class="elementtext"  type="text"  value=""/></input></h3>
+										<div class="logobox"></div> 
+									</span> 
+								</li>						        
+						        
+						        <li id="li_2" class="inputtop"  >
+									<label class="inputdescription" for="element_2"><h1>Email</h1> </label>
+									<span>
+										<h3><input id="element_2" name="element_2" class="elementtext"  type="text"  value=""/></input> </h3>
+										<div class="logobox"></div> 
+									</span> 
+								</li>	
+
+					        </div>
+					        
+					        <div class="formtop">
+						        <li id="li_3" class="inputtop">
+									<label class="inputdescription" for="element_3"><h1>Message</h1> </label>
+									<span>
+										<h3><textarea id="element_3" name="element_3" class="textarea"></textarea></h3> 
+										<div class="logobox"></div>
+									</span> 
+								</li>
+
+								<li class="submitbutton">
+									<h3><input type="submit" id='submitbtn' value="Send" class="button"></h3>
+								</li>
+							</div>						
+						</form>	
+				</div>
+			</div>	
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+	
+
+<div id="content">
+
+
+	<div class="row clearfix  title garden">	
+		<div class=" column full">
+				<h1 ><span class="text">GardenBlock</span></h1>
+				<h2><span class="text"> Indoor Hydroponics for small spaces</span></h2>
+		</div>
+	</div>
+	
+
+
+	<div class="row clearfix  gardenblockopening">	
+				<div class="awards">
+						<h3>Finalist</h3>
+						<img src="img/jamesdysonaward.jpg" alt="James Dyson Award" width="100px" >
+					</div>
+	</div>
+
+	<div class="row clearfix whiteback">	
+			<div class="column">
+					<div class="intext">
+						<h3>GardenBlock is a hydroponic system that allows gardeners to grow vegetation within small living spaces.  </h3>
+						<h4>When one block is connected to a power source, other blocks connected to the heads of the block will transfer the energy to power the other units. Each block has their own water source and a set of grow lights. Users are able to control the water amount and artificial lighting remotely so they can grow a diverse range of plants.  </h4>
+					</div>
+					
+			</div>
+	</div>
+
+	<div class="row clearfix greenback">	
+			<div class="column full">
+					
+
+				<div class="intext ">
+					<p><h1><b>As urban living spaces and modern infrastructure dominate cities,</b> garden space and local produce are becoming more scarce.</h1> </p>
+					<div class="smallliving">
+						<img class="livingspace2" src="img/livingspace1.png" alt="Living Space" width="100px" >
+						<img class="livingspace1" src="img/livingspace2.png" alt="Living Space" width="100px" >
+					</div>
+
+				</div>
+
+			</div>
+	</div>
+
+
+	<div class="row clearfix gardenblockwhy ">	
+			<div class="column full">
+					<div class="videos" >
+						<iframe class="hiddenvideo" frameborder="0" allowfullscreen  autohide="1" ></iframe>
+						<img class="picturevid" src="img/gardenpicturevid.jpg" >
+						<div class="playvideo"></div>
+					</div>
+
+					
+   
+
+
+
+
+					<div class="intext">
+					<p><h3>GardenBlock is a hydroponic system is the shape of a building block that allows gardeners to grow vegetation within small living spaces. The shape of Gardenblock allows users to customize their own configuration within their homes and efficiently grow a diverse range of vegetation through automation. </h3></p>
+
+					<p><h4>Inspired by new techniques in hydroponics and vertical farming, GardenBlock addresses the limitations of home gardening and provides numerous natural benefits to households. Plants filter the toxins from manufactured products that exist in our homes. Local produce helps reduce pollution coming from the transportation of non-local foods. Growing plants and vegetation improves the quality of food, air, and urban spaces in modern cities.
+ </h4></p>
+					</div>
+
+				
+			</div>
+	</div>
+
+
+	</div>
+
+
+	<div class="row clearfix  gardencloseup">	
+			
+	</div>
+
+
+	<div class="row clearfix gardenblockhow ">	
+			<div class="column full">
+					<div class="interactions"></div>
+
+					<div class="plainimage moreinfo gardendropmain">
+						<img src="img/gardenblockhow.jpg" alt="How Garden Block Works" >
+
+						<div class="menucontainer gardendrop1">
+							<div class="menu crossed"><span></span></div>
+							<div class="dropinfo"> <h5>Water is stored in the water reservoir</h5></div>
+						</div>
+
+						<div class="menucontainer gardendrop2">
+							<div class="menu crossed"><span></span></div>
+							<div class="dropinfo"> <h5>Water is being pumped onto the grow tray. Excessive water will be drained through the overflow pipe.</h5></div>
+						</div>
+
+						<div class="menucontainer gardendrop3">
+							<div class="menu crossed"><span></span></div>
+							<div class="dropinfo"> <h5>Water is drained back into the reservoir. Growing medium will have absorbed the nutrients for the plants</h5></div>
+						</div>
+
+						<div class="menucontainer gardendrop4">
+							<div class="menu crossed"><span></span></div>
+							<div class="dropinfo"> <h5>A user interface controls the automated water and lighting system that controls the growth cycle of the plants. These cycles can be customized towards different plant needs through the press of a button. The automated system gives users freedom from the many responsibilities of gardening.</h5></div>
+						</div>
+					</div>
+
+
+					<div class="intext">
+						<p><h3>Inspired by building blocks, connecting each block provides both functional and creative beauty. The structure of the building blocks allow users to playfully configure any shape that is unique to their spatial needs. The application used to control GardenBlock’s LED lighting system and water pumps also allow a visual representation of growth progression through graphics of growing trends and tips to help grow more efficiently.</h3></p>
+					</div>
+
+
+				
+			</div>
+	</div>
+		
+
+	<div class="row clearfix gardenblockoutcomes">	
+			<div class="column full">
+					<div class="intext">
+						<p><h2>Outcomes</h2></p>
+						<p><h4>GardenBlock was a project we wanted to integrate product design and interaction design through digital systems. The result was a successful project showcased on the James Dyson Award 2012. The most valuable skill gained was the ability to visualize and communicate our idea through a series of research and storyboarding. </h4></p>
+					
+					</div>			
+			</div>
+	</div>
+
+
+	<div class="otherprojects">
+		<a href="yokohama.html">
+		<div class="nextproject"><img src="img/yokohamafeatured.jpg" alt="Yokohama"></div>
+		<h5>Next Project</h5><h2>Yokohama</h2>
+		</a>
+
+	</div>
+
+	<div id="footer">
+		<div class="workwithme"><h1>Like my work?  <a>Say hello.</a></h1></div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> 
+    
+
+
+</body>
+
+</html>
